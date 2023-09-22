@@ -7,6 +7,12 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <% if (user) { %>
+      welcome <%= user.username %>
+      <a href="/users/logout">Logout</a>
+    <% } else { %>
+      <a href="/users/login">Login</a>
+    <% } %>
 
     <form method="post" action="/todo?kunci=1234">
       <input type="text" name="item" />

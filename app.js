@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var todoRouter = require('./routes/todo');
@@ -43,14 +44,19 @@ app.set('view engine', 'ejs');
 
 // app.use(checkKunci)
 app.use(tulisLaporan)
-
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/todo', todoRouter)
+app.use('/todos', todoRouter)
 app.use('/users', require('./routes/user'))
 
 // catch 404 and forward to error handler
