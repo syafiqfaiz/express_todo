@@ -1,0 +1,14 @@
+<%- include('../layout/header'); -%>
+  <h1>Login User</h1>
+
+  <div style="border: solid 1px black; margin: 10px; padding: 20px;">
+    <form action="/register" method="post">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Username" style="padding: 5px; margin: 5px;"/>
+      <br />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password" style="padding: 5px; margin: 5px;" />
+      <br />
+      <input type="submit" value="Register" style="padding: 5px; margin: 5px;"/>
+    </form>
+<%- include('../layout/footer'); -%>
